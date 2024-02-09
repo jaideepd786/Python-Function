@@ -1,0 +1,189 @@
+A function is a block of code that performs a specific task. It only runs when it is called.
+
+The function code blocks must start with the keyword def followed by the function name, parentheses( () ), and colon(:).
+def funct_name():
+  Statements
+  return
+
+Types of Functions:-
+
+Built-in library function: These are Standard functions in Python that are available to use
+eg-> print(), len(), sum() etc.
+
+User Defined Function: These types of functions are defined by the user to perform any specific task
+
+def addition():       # Function Definition
+    '''This is my 
+    first function'''
+    a=10
+    b=10
+    return a+b
+
+addition()             # Function Call
+o/p-> 20
+
+## Pass nothing, return nothing Function
+def display():                           ## on running this cell, the body is not exeuted, only display function is passed to compiler
+    print('No parameter passed and nothing returned by function')
+    name='ABC'
+    print(name)
+
+display()                               ## On callin function, it searches for display funcion in compiler and execute the body part .After executing whole function, it returns back to calling obj.
+o/p-> No parameter passed and nothing returned by function
+      ABC
+
+## Pass Parameter, return nothing
+def add(a,b):
+  print('Two numbers passed as parameter but returned nothing')
+  prtin(a+b)
+
+add(10,30)
+o/p-> 40
+
+## Pass Parameter, return something
+def add(a,b):
+  print('Two numbers passed as parameter but returned addition of a and b')
+  return a+b
+
+c=add(10,30)            # value returned by the function can be stored in variable and be used in future
+o/p-> Two number passed as parameters as a and b
+      40                # only 40 is stored in c , not the statement
+
+
+## Pass nothing, return something
+def add():
+  a,b=10,30
+  print('Nothing passed as parameter but returned addition of a and b')
+  return a+b
+
+c=add()
+o/p-> Nothing passed as parameter but returned addition of a and b
+      40
+
+
+
+## WAP to print area and perimeter of shapes
+def square(side):
+    print(f'Area: {side**2}\nPerimeter: {side*4}\n')
+
+def circle(radius):
+    print(f"Area: {(22/7)*(radius**2)}\nCircumference: {2*(22/7)*radius}\n")
+    
+def rectangle(length,breadth):
+    print(f'Area: {length*breadth}\nPerimeter: {2*(length+breadth)}\n')
+
+
+while True:
+    op=input('Enter choice ')
+
+    if op=='S':
+        side=int(input('\nEnter side of square'))
+        square(side)
+    elif op=='C':
+        radius=int(input('\nEnter raidus of circle'))
+        circle(radius)
+    elif op=='R':
+        length=int(input('\nEnter length: '))
+        breadth=int(input('Enter breadth: '))
+        rectangle(length,breadth)
+    elif op=='E':
+        print('Thank You!')
+        break
+
+o/p-> Enter choice S
+
+      Enter side of square10
+      Area: 100
+      Perimeter: 40
+      
+      Enter choice C
+      
+      Enter raidus of circle21
+      Area: 1386.0
+      Circumference: 132.0
+      
+      Enter choice R
+      
+      Enter length: 10
+      Enter breadth: 20
+      Area: 200
+      Perimeter: 60
+      
+      Enter choice E
+      Thank You!
+
+
+def Per_info():
+    name=input('Enter Name: ')
+    age=int(input('Enter Age: '))
+    contact=int(input('Enter contact: '))
+    add=input('Enter address: ')
+    print(f'\nName: {name}\nAge:{age}\nContact:{contact}\nAddress:{add}')
+
+Per_info()
+o/p-> Enter Name: Vaibhav
+      Enter Age: 24
+      Enter contact: 7648161131
+      Enter address: Pune
+      
+      Name: Vaibhav
+      Age:24
+      Contact:7648161131
+      Address:Pune
+
+
+## Types of Arguments
+1) Required arguments- These are the arguments that must be passed to a function. Without them, it throws an error when the function is called.
+def disp(name):
+  print(f'Hello {name}!')
+
+disp('Vaibhav')       ## here 'Vaibhav' is required argument 
+o/p-> Hello Vaibhav!
+
+2) Optional Arguments- Some function parameters take default values while defining the function. And there is no need to provide values for them which makes them optional arguments.
+def product(a, b=4):   ## if no keyword is passed , b takes value of 4
+  return a * b
+print("with default argument: ",product(8))  # 3 is passed to paramater a
+print("Changing the default argument: ",product(8, 5)) # 3 is passed to a and 6 is passed to b (Hence b do not take default value of 4)
+o/p-> with default argument: 32
+      Changing the default argument: 40
+
+3) Positional Arguments- Positional arguments are the values passed to the function in the same order as the parameters specified.
+def full_name(f_name,m_name,l_name):
+  print('Full Name is: ',f_name + ' ' + m_name + ' ' + l_name)
+
+full_name('Johnny', 'Sam', 'Smith')
+o/p-> Full Name is: Johnny Sam Smith
+
+full_name('Smith','Johnny','Sam')
+o/p-> Full Name is: Smith Johnny Sam
+
+4) Keyword argument- Keyword argument is where the name of the parameter is provided while passing the function arguments.
+full_name(l_name='Smith', f_name='Johnny', m_name='Sam')
+o/p-> Full Name is: Johnny Sam Smith
+
+5) Variable-length Arguments (*args, **kwargs)-
+   *args are the non-keyword arguments/positional arguments. We can pass any number of arguments by separating them using commas or by passing a list prefixed with a * symbol (*list)
+   **kwargs are the keyword arguments. We can pass any number of keyword arguments directly or by using a dictionary( key, value pairs).
+
+def print_args_and_kwargs(*args, **kwargs):
+    print("Positional arguments:")
+    for arg in args:
+        print(arg)
+    sum=0
+    for arg in args:
+        sum+=arg
+    print('SUM: ',sum) 
+    print("Keyword arguments:")
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+ 
+print_args_and_kwargs(10, 20, 30, name="Sam", age=25)
+o/p-> Positional arguments:
+      10
+      20
+      30
+      SUM: 60 
+      Keyword arguments:
+      name: Sam
+      age: 25
